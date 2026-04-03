@@ -1,0 +1,30 @@
+/**
+ * Main stylesheet — ITCSS architecture
+ */
+
+/* SETTINGS: Design tokens */
+@use '@stonal-tech/lib-design-token/scss' as *;
+
+/* GENERIC: Design system base styles */
+@import '@stonal-tech/lib-design-system-react/lib-design-system-react.css';
+
+/* GENERIC: Reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  font-family: var(--font-family-default, sans-serif);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
