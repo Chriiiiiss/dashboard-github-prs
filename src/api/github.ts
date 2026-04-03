@@ -81,3 +81,21 @@ export const fetchCheckRuns = async (
   const data = await res.json();
   return data.check_runs;
 };
+
+export const postPRComment = async (
+  token: string,
+  owner: string,
+  repo: string,
+  issueNumber: number,
+  body: string,
+): Promise<void> => {
+  const res = await fetch(
+    `${GITHUB_API}/repos/${owner}/${repo}/issues/${issueNumber}/comments`,
+    {
+      method: 'POST',
+      headers: { ...headers(token), 'Content-Type': 'application/json' },
+      body: JSON.stringify({ body }),
+    },
+  );
+  if (!res.ok) throw new Error(`Failed to post comment: ${res.status}`);
+};
